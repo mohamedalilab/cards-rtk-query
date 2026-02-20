@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root {
+  /* Backgrounds */
+  --color-bg-app: #f9fafb; /* gray-50 */
+  --color-bg-surface: #ffffff; /* white */
+  --color-bg-subtle: #e5e7eb; /* gray-200 */
+  --color-bg-subtle-hover: #d1d5db; /* gray-300 */
+
+  /* Text */
+  --color-text-main: #1f2937; /* gray-800 */
+  --color-text-muted: #4b5563; /* gray-600 */
+  --color-text-faint: #9ca3af; /* gray-400 */
+  --color-text-inverse: #ffffff; /* white */
+
+  /* Border */
+  --color-border: #e5e7eb; /* gray-200 */
+  --color-border-active: #1f2937; /* gray-800 */
+
+  /* Primary Action (Cyan) */
+  --color-primary: #22d3ee; /* cyan-400 */
+  --color-primary-hover: #06b6d4; /* cyan-500 */
+  --color-primary-text: #ffffff; /* white */
+
+  /* Secondary Action (Gray) */
+  --color-secondary: #9ca3af; /* gray-400 */
+  --color-secondary-text: #ffffff; /* white */
+  --color-secondary-hover: #6b7280; /* gray-500 */
+}
+
+/* Dark Mode Overrides */
+.dark {
+  /* Backgrounds */
+  --color-bg-app: #111827; /* gray-900 */
+  --color-bg-surface: #1f2937; /* gray-800 */
+  --color-bg-subtle: #374151; /* gray-700 */
+  --color-bg-subtle-hover: #4b5563; /* gray-600 */
+
+  /* Text */
+  --color-text-main: #f9fafb; /* gray-50 */
+  --color-text-muted: #9ca3af; /* gray-400 */
+  --color-text-faint: #6b7280; /* gray-500 */
+  --color-text-inverse: #1f2937; /* gray-800 */
+
+  /* Border */
+  --color-border: #374151; /* gray-700 */
+  --color-border-active: #ffffff; /* white */
+
+  /* Primary Action remains same specific cyan in dark mode for this design */
+}
+
+@layer components {
+  button, .btn {
+    @apply px-5 py-2.5 rounded-lg font-medium active:scale-95 transition-all shadow-sm cursor-pointer;
+  }
+  .btn-primary {
+    @apply bg-(--color-primary) text-(--color-primary-text) hover:bg-(--color-primary-hover);
+  }
+
+  .btn-secondary {
+    @apply bg-(--color-secondary) text-(--color-secondary-text) hover:bg-(--color-secondary-hover);
+  }
+  
+  .btn-icon {
+    @apply px-3 py-1.5 rounded text-sm transition-colors cursor-pointer;
+  }
+
+  .form-container {
+    @apply bg-(--color-bg-surface) p-6 rounded-xl shadow-md mb-6 transition-colors duration-200;
+  }
+
+  .form-input {
+    @apply w-full p-3 mb-3 border-2 border-(--color-border) rounded-lg text-sm box-border focus:outline-none focus:border-(--color-primary) bg-(--color-bg-surface) text-(--color-text-main) transition-colors;
+  }
+
+  .card-container {
+    @apply rounded-xl p-5 text-white flex flex-col justify-between min-h-40 shadow-md hover:-translate-y-1 hover:shadow-lg transition-all duration-200;
+  }
+}
