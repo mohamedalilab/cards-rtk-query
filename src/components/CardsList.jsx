@@ -1,17 +1,19 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchCards,
-  selectAllCards,
   selectCardsError,
+  selectCardsIds,
   selectCardsStatus,
 } from "../features/cardsSlice";
+import { fetchCards } from "../features/cardsApi";
 import SingleCard from "./SingleCard";
 
-function CardsList () {
-  const cards = useSelector(selectAllCards);
+function CardsList() {
+  // get ids instead of all cards data
+  const cardsIds = useSelector(selectCardsIds);
   const cardsStatus = useSelector(selectCardsStatus);
   const cardsError = useSelector(selectCardsError);
+
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -34,8 +36,11 @@ function CardsList () {
       )}
       {cardsStatus === "succeeded" && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cards?.length > 0 ? (
-            cards.map((card) => <SingleCard key={card.id} card={card} />)
+          {cardsIds?.length > 0 ? (
+            cardsIds.map((id) => {
+              console.log(id);
+              return <SingleCard key={id} cardId={id} />;
+            })
           ) : (
             <p className="col-span-full text-center p-12 text-(--color-text-faint) text-lg">
               No cards yet. Add one above!

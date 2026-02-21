@@ -4,9 +4,8 @@ import {
   cancelEdit,
   selectEditingId,
   selectCardById,
-  addNewCard,
-  updateCard,
 } from "../features/cardsSlice";
+import { addNewCard, updateCard } from "../features/cardsApi";
 import { COLORS } from "../constants/colors";
 
 const CardForm = () => {

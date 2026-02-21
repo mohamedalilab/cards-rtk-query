@@ -1,10 +1,17 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { deleteCard, setEditingId } from "../features/cardsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectCardById,
+  setEditingId,
+} from "../features/cardsSlice";
+import { deleteCard } from "../features/cardsApi";
 
-function SingleCard({ card }) {
+function SingleCard({ cardId }) {
   const dispatch = useDispatch();
   const [loading, setLoading] = React.useState(false);
+  // select card by its id
+  const card = useSelector((state) => selectCardById(state, cardId));
+
   const handleDelete = async () => {
     setLoading(true);
     try {
